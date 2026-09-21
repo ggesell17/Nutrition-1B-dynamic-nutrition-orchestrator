@@ -4,26 +4,6 @@
 
 ---
 
-Nutrition-1B-dynamic-nutrition-orchestrator/
-│
-├── src/
-│   └── nutrition_engine/
-│       ├── __init__.py
-│       ├── ingredients.py
-│       ├── macro_math.py
-│       ├── scaling.py
-│       └── benchmarks.py
-│
-├── tests/
-│   ├── __init__.py
-│   ├── test_macro_math.py
-│   ├── test_scaling.py
-│   └── test_benchmarks.py
-│
-├── requirements.txt
-├── pytest.ini
-└── README.md
-
 ### 👥 **Team Members**
 
 | Name             | GitHub Handle | Contribution                                                             | LinkedIn Account                                 |
@@ -134,3 +114,65 @@ Cite relevant papers, articles, or resources that supported your project.
 ## 🙏 **Acknowledgements** (Optional but encouraged)
 
 Thank your Challenge Advisor, host company representatives, TA, and others who supported your project.
+
+## Deterministic Macro Math Engine
+
+This project includes a deterministic macro-calculation engine for calculating
+ingredient nutrition totals from a canonical nutrition dataset.
+
+### Data model
+
+Each ingredient stores calories, protein, carbohydrates, and fat per 100 grams.
+
+### Calculation formula
+
+For a requested ingredient quantity:
+
+```text
+scale_factor = requested_grams / 100
+total_macro = macro_per_100g * scale_factor
+```
+
+For example, chicken breast contains 31 grams of protein per 100 grams.
+For 250 grams of chicken breast:
+
+```text
+protein = 31 * (250 / 100) = 77.5g
+```
+
+### Ingredient scaling
+
+The system supports:
+
+- Scaling an ingredient with a multiplier
+- Scaling to an exact target quantity in grams
+- Scaling recipe ingredients when serving counts change
+
+Macro totals are always recalculated from the canonical per-100g nutrition
+record rather than from previously rounded values.
+
+### Evaluation benchmarks
+
+The project uses benchmark cases to verify:
+
+- Macro calculation accuracy
+- Quantity scaling accuracy
+- Recipe-serving scaling accuracy
+- Deterministic repeated results
+- Invalid-input handling
+
+The expected threshold for deterministic calculation benchmarks is 100%.
+
+### Running tests
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run all tests:
+
+```bash
+pytest
+```

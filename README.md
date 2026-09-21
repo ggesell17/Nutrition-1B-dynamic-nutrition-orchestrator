@@ -4,6 +4,26 @@
 
 ---
 
+Nutrition-1B-dynamic-nutrition-orchestrator/
+│
+├── src/
+│   └── nutrition_engine/
+│       ├── __init__.py
+│       ├── ingredients.py
+│       ├── macro_math.py
+│       ├── scaling.py
+│       └── benchmarks.py
+│
+├── tests/
+│   ├── __init__.py
+│   ├── test_macro_math.py
+│   ├── test_scaling.py
+│   └── test_benchmarks.py
+│
+├── requirements.txt
+├── pytest.ini
+└── README.md
+
 ### 👥 **Team Members**
 
 | Name             | GitHub Handle | Contribution                                                             | LinkedIn Account                                 |
